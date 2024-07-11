@@ -9,16 +9,16 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPage.class)
 public class LoginPageAndroid extends LoginPage {
 
-    @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Username\"]")
+    @FindBy(xpath = "//android.widget.EditText[@content-desc='test-Username']")
     private ExtendedWebElement loginInput;
 
-    @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Password\"]")
+    @FindBy(xpath = "//android.widget.EditText[@content-desc='test-Password']")
     private ExtendedWebElement passwordInput;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-LOGIN']")
     private ExtendedWebElement loginButton;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Error message\"]")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']")
     private ExtendedWebElement errorMessage;
 
     public LoginPageAndroid(WebDriver driver) {

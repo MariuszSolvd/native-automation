@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePage.class)
 public class HomePageAndroid extends HomePage {
 
-    @FindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Search\"]")
+    @FindBy(xpath = "//android.widget.FrameLayout[@content-desc='Search']")
     private ExtendedWebElement searchButton;
 
     public HomePageAndroid(WebDriver driver) {
