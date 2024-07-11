@@ -6,7 +6,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_TABLET, parentClass = LoginPage.class)
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPage.class)
 public class LoginPageAndroid extends LoginPage {
 
     @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Username\"]")
