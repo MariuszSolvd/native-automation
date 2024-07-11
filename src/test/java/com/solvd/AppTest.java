@@ -15,7 +15,6 @@ public class AppTest extends AbstractTest {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         LoginPage loginPage = homePage.openApp();
         assertTrue(homePage.isAppRunning(), "App is not running");
-        loginPage.isAppRunning();
         homePage.turnOffApp();
     }
 }
