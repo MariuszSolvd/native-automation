@@ -11,7 +11,7 @@ import static org.testng.Assert.*;
 public class AppTest extends AbstractTest {
 
     @Test
-    public void openApp() {
+    public void shouldOpenSwagLabsApp() {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         LoginPage loginPage = homePage.openApp();
         assertTrue(homePage.isAppRunning(), "App is not running");
