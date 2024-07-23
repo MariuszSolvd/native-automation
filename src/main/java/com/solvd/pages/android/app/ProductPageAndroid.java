@@ -12,8 +12,7 @@ import java.util.List;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ProductBasePage.class)
 public class ProductPageAndroid extends ProductBasePage {
 
-    @FindBy(xpath = "//android.widget.ScrollView[@content-desc='test-PRODUCTS']" +
-            "//android.view.ViewGroup[@content-desc='test-Item']")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Item']")
     private List<ProductAndroid> products;
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Modal Selector Button']")
