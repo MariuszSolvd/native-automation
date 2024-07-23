@@ -6,6 +6,7 @@ import com.solvd.pages.common.app.ProductBasePage;
 import com.zebrunner.carina.core.AbstractTest;
 
 import com.zebrunner.carina.utils.R;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
@@ -17,7 +18,6 @@ public class AppTest extends AbstractTest {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         homePage.openApp();
         assertTrue(homePage.isAppRunning(), "App is not running");
-        homePage.turnOffApp();
     }
 
     @Test
@@ -27,5 +27,11 @@ public class AppTest extends AbstractTest {
         assertTrue(homePage.isAppRunning(), "App is not running");
         ProductBasePage productPage = loginPage.login(R.TESTDATA.get("correct_user"), R.TESTDATA.get("correct_password"));
         assertTrue(productPage.isPageOpened(), "Product page isn't open");
+    }
+
+    @AfterTest
+    public void closeApp() {
+        HomePage homePage = initPage(getDriver(), HomePage.class);
+        homePage.turnOffApp();
     }
 }

@@ -9,16 +9,16 @@ import org.openqa.selenium.WebDriver;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPage.class)
 public class LoginPageIOS extends LoginPage {
 
-    @ExtendedFindBy(iosPredicate = "name == \"test-Username\"")
+    @ExtendedFindBy(iosPredicate = "name == 'test-Username'")
     private ExtendedWebElement loginInput;
 
-    @ExtendedFindBy(iosPredicate = "name == \"test-Password\"")
+    @ExtendedFindBy(iosPredicate = "name == 'test-Password'")
     private ExtendedWebElement passwordInput;
 
-    @ExtendedFindBy(iosPredicate = "name == \"test-LOGIN\"")
+    @ExtendedFindBy(iosPredicate = "name == 'test-LOGIN'")
     private ExtendedWebElement loginButton;
 
-    @ExtendedFindBy(iosPredicate = "name == \"test-Error message\"")
+    @ExtendedFindBy(iosPredicate = "name == 'test-Error message'")
     private ExtendedWebElement errorMessage;
 
     public LoginPageIOS(WebDriver driver) {

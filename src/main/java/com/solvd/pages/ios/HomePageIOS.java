@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = HomePage.class)
 public class HomePageIOS extends HomePage {
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"spotlight-pill\" AND label == \"Search\"`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == 'spotlight-pill' AND label == 'Search'`]")
     private ExtendedWebElement searchButton;
 
     public HomePageIOS(WebDriver driver) {
