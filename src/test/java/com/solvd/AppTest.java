@@ -9,7 +9,7 @@ import com.zebrunner.carina.utils.R;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
 public class AppTest extends AbstractTest {
 
@@ -25,8 +25,19 @@ public class AppTest extends AbstractTest {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         LoginPage loginPage = homePage.openApp();
         assertTrue(homePage.isAppRunning(), "App is not running");
-        ProductBasePage productPage = loginPage.login(R.TESTDATA.get("correct_user"), R.TESTDATA.get("correct_password"));
+        loginPage.login(R.TESTDATA.get("correct_user"), R.TESTDATA.get("correct_password"));
+        ProductBasePage productPage = initPage(getDriver(), ProductBasePage.class);
         assertTrue(productPage.isPageOpened(), "Product page isn't open");
+    }
+
+    @Test
+    public void shouldNotLogin() {
+        HomePage homePage = initPage(getDriver(), HomePage.class);
+        LoginPage loginPage = homePage.openApp();
+        assertTrue(homePage.isAppRunning(), "App is not running");
+        loginPage.login(R.TESTDATA.get("incorrect_user"), R.TESTDATA.get("incorrect_password"));
+        assertTrue(loginPage.isErrorVisible(), "Error is not visible");
+
     }
 
     @AfterTest

@@ -16,11 +16,10 @@ public abstract class LoginPage extends AppBasePage {
 
     public abstract boolean isErrorVisible();
 
-    public ProductBasePage login(String username, String password) {
+    public void login(String username, String password) {
         inputUsername(username);
         inputPassword(password);
         clickLoginButton();
-        return initPage(getDriver(), ProductBasePage.class);
     }
 
 
