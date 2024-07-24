@@ -3,6 +3,7 @@ package com.solvd;
 import com.solvd.pages.common.HomePage;
 import com.solvd.pages.common.app.LoginPage;
 import com.solvd.pages.common.app.ProductBasePage;
+import com.solvd.service.LoginService;
 import com.zebrunner.carina.core.AbstractTest;
 
 import com.zebrunner.carina.utils.R;
@@ -27,7 +28,7 @@ public class AppTest extends AbstractTest {
         assertTrue(homePage.isAppRunning(), "App is not running");
         loginPage.login(R.TESTDATA.get("correct_user"), R.TESTDATA.get("correct_password"));
         ProductBasePage productPage = initPage(getDriver(), ProductBasePage.class);
-        assertTrue(productPage.isPageOpened(), "Product page isn't open");
+        productPage.assertPageOpened();
     }
 
     @Test
@@ -38,6 +39,15 @@ public class AppTest extends AbstractTest {
         loginPage.login(R.TESTDATA.get("incorrect_user"), R.TESTDATA.get("incorrect_password"));
         assertTrue(loginPage.isErrorVisible(), "Error is not visible");
 
+    }
+
+    @Test
+    public void scrollProductPage() {
+        LoginService loginService = new LoginService();
+        ProductBasePage productPage = loginService.successfulLogin();
+        productPage.assertPageOpened();
+        productPage.swipeToLastProduct();
+        assertTrue(productPage.isLastProductVisible(), "Last product is not visible");
     }
 
     @AfterTest

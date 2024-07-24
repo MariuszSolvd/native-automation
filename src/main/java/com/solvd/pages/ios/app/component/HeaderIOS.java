@@ -1,11 +1,13 @@
 package com.solvd.pages.ios.app.component;
 
+import com.solvd.pages.common.app.component.Header;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 
-public class HeaderIOS extends AbstractUIObject {
+@Getter
+public class HeaderIOS extends Header {
 
     @ExtendedFindBy(iosPredicate = "name == 'test-Menu'")
     private ExtendedWebElement menuButton;
