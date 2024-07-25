@@ -2,7 +2,7 @@ package com.solvd.pages.common.app;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class LoginPage extends AppBasePage {
+public abstract class LoginPage extends AppPage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
