@@ -7,6 +7,7 @@ import com.solvd.pages.common.app.component.Product;
 import com.solvd.pages.ios.app.component.FooterIOS;
 import com.solvd.pages.ios.app.component.HeaderIOS;
 import com.solvd.pages.ios.app.component.ProductIOS;
+import com.solvd.utilis.Constants;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -23,11 +24,10 @@ public class ProductPageIOS extends ProductPage {
     @ExtendedFindBy(iosPredicate = "name == 'test-Modal Selector Button'")
     private ExtendedWebElement sortButton;
 
-    @ExtendedFindBy(iosPredicate = "name == 'headerContainer'")
+    @ExtendedFindBy(iosPredicate = Constants.HEADER_IOS)
     private HeaderIOS header;
 
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == " +
-            "\"\uF099 \uF09A \uF0D5 \uF0E1 © 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy\"`][2]")
+    @ExtendedFindBy(iosClassChain = Constants.FOOTER_IOS)
     private FooterIOS footer;
 
     public ProductPageIOS(WebDriver driver) {

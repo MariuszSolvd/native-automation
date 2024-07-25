@@ -7,6 +7,7 @@ import com.solvd.pages.common.app.ProductPage;
 import com.solvd.pages.common.app.component.Footer;
 import com.solvd.pages.common.app.component.Header;
 import com.solvd.pages.common.app.component.Product;
+import com.solvd.utilis.Constants;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -23,10 +24,10 @@ public class ProductPageAndroid extends ProductPage {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Modal Selector Button']")
     private ExtendedWebElement sortButton;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Menu']/parent::android.view.ViewGroup")
+    @FindBy(xpath = Constants.HEADER_ANDROID)
     private HeaderAndroid header;
 
-    @FindBy(xpath = "//android.widget.TextView[@text='\uF099']//parent::android.view.ViewGroup")
+    @FindBy(xpath = Constants.FOOTER_ANDROID)
     private FooterAndroid footer;
 
     public ProductPageAndroid(WebDriver driver) {
