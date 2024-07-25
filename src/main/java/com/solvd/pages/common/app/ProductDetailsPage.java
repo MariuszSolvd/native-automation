@@ -11,4 +11,6 @@ public abstract class ProductDetailsPage extends RegularsPage {
     public abstract String getNameText();
 
     public abstract String getPriceText();
+
+    public abstract void addToCart();
 }

@@ -20,6 +20,9 @@ public class ProductDetailsPageIOS extends ProductDetailsPage {
     @ExtendedFindBy(iosPredicate = "name == 'test-Price'")
     private ExtendedWebElement price;
 
+    @ExtendedFindBy(iosPredicate = "name == 'ADD TO CART'")
+    private ExtendedWebElement addToCarButton;
+
     @ExtendedFindBy(iosPredicate = Constants.HEADER_IOS)
     private HeaderIOS header;
 
@@ -38,6 +41,11 @@ public class ProductDetailsPageIOS extends ProductDetailsPage {
     @Override
     public String getPriceText() {
         return price.getText();
+    }
+
+    @Override
+    public void addToCart() {
+        addToCarButton.click();
     }
 
     @Override

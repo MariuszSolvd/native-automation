@@ -20,6 +20,9 @@ public class ProductDetailsPageAndroid extends ProductDetailsPage {
     @FindBy(xpath = "//android.widget.TextView[@content-desc='test-Price']")
     private ExtendedWebElement price;
 
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-ADD TO CART']")
+    private ExtendedWebElement addToCarButton;
+
     @FindBy(xpath = Constants.HEADER_ANDROID)
     private HeaderAndroid header;
 
@@ -38,6 +41,11 @@ public class ProductDetailsPageAndroid extends ProductDetailsPage {
     @Override
     public String getPriceText() {
         return price.getText();
+    }
+
+    @Override
+    public void addToCart() {
+        addToCarButton.click();
     }
 
     @Override
