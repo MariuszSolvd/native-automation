@@ -19,4 +19,14 @@ public class HeaderAndroid extends Header {
         super(driver);
     }
 
+    @Override
+    public void clickCartButton() {
+        cartButton.click();
+    }
+
+    @Override
+    public void clickMenuButton() {
+        menuButton.click();
+    }
+
 }
