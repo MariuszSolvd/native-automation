@@ -12,6 +12,7 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class ProductPageIOS extends ProductPage {
     @ExtendedFindBy(iosPredicate = "name == 'test-Modal Selector Button'")
     private ExtendedWebElement sortButton;
 
-    @ExtendedFindBy(iosPredicate = Constants.HEADER_IOS)
+    @FindBy(xpath = Constants.HEADER_IOS)
     private HeaderIOS header;
 
     @ExtendedFindBy(iosClassChain = Constants.FOOTER_IOS)
@@ -59,6 +60,5 @@ public class ProductPageIOS extends ProductPage {
     public List<? extends Product> getProducts() {
         return products;
     }
-
 
 }
