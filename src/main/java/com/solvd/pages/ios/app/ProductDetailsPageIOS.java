@@ -10,7 +10,6 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ProductDetailsPage.class)
 public class ProductDetailsPageIOS extends ProductDetailsPage {
@@ -24,7 +23,7 @@ public class ProductDetailsPageIOS extends ProductDetailsPage {
     @ExtendedFindBy(iosPredicate = "name == 'ADD TO CART'")
     private ExtendedWebElement addToCarButton;
 
-    @FindBy(xpath = Constants.HEADER_IOS)
+    @ExtendedFindBy(iosClassChain = Constants.HEADER_IOS)
     private HeaderIOS header;
 
     @ExtendedFindBy(iosClassChain = Constants.FOOTER_IOS)
