@@ -15,6 +15,9 @@ public class ProductCartIOS extends ProductCart {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == 'test-Price'`]/XCUIElementTypeStaticText")
     private ExtendedWebElement priceProduct;
 
+    @ExtendedFindBy(iosPredicate = "name == 'test-REMOVE'")
+    private ExtendedWebElement buttonRemove;
+
     public ProductCartIOS(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
@@ -28,6 +31,11 @@ public class ProductCartIOS extends ProductCart {
     @Override
     public String getProductPrice() {
         return priceProduct.getText();
+    }
+
+    @Override
+    public void clickRemove() {
+        buttonRemove.click();
     }
 
 

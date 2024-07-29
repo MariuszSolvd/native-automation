@@ -12,4 +12,6 @@ public abstract class ProductCart extends AbstractUIObject {
     public abstract String getProductName();
 
     public abstract String getProductPrice();
+
+    public abstract void clickRemove();
 }

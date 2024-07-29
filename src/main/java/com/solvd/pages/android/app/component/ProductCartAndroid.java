@@ -15,6 +15,9 @@ public class ProductCartAndroid extends ProductCart {
     @FindBy(xpath = ".//android.view.ViewGroup[@content-desc='test-Price']/android.widget.TextView")
     private ExtendedWebElement priceProduct;
 
+    @FindBy(xpath = ".//android.view.ViewGroup[@content-desc='test-REMOVE']")
+    private ExtendedWebElement buttonRemove;
+
     public ProductCartAndroid(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
@@ -28,6 +31,11 @@ public class ProductCartAndroid extends ProductCart {
     @Override
     public String getProductPrice() {
         return priceProduct.getText();
+    }
+
+    @Override
+    public void clickRemove() {
+        buttonRemove.click();
     }
 
 
