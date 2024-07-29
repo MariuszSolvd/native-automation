@@ -78,7 +78,20 @@ public class AppTest extends AbstractTest {
         ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
         ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
-        assertEquals(addedProduct, cartProduct, "Product add to cart is not the same");
+        assertEquals(addedProduct, cartProduct, "Product added to cart is not the same");
+    }
+
+    @Test(testName = "TC7")
+    public void verifyRemoveProductFromCart() {
+        ProductService productService = new ProductService();
+        ProductDetailsPage productDetailsPage = productService.pickRandomProduct();
+        productDetailsPage.addToCart();
+        ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
+        CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
+        ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
+        assertEquals(addedProduct, cartProduct, "Product added to cart is not the same");
+        cartPage.getProducts().getFirst().clickRemove();
+        assertTrue(cartPage.getProducts().isEmpty(), "Product was not removed");
     }
 
     @AfterTest
