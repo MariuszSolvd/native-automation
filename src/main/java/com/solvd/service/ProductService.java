@@ -30,6 +30,7 @@ public class ProductService implements ICustomTypePageFactory {
 
     public CartPage pickRandomProductAndVerifyCart() {
         ProductDetailsPage productDetailsPage = pickRandomProduct();
+        productDetailsPage.addToCart();
         ProductData productPicked = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
         ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
