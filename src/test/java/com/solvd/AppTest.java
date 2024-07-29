@@ -3,11 +3,13 @@ package com.solvd;
 import com.solvd.mapper.ProductMapper;
 import com.solvd.model.ProductData;
 import com.solvd.pages.common.HomePage;
+import com.solvd.pages.common.app.CartPage;
 import com.solvd.pages.common.app.LoginPage;
 import com.solvd.pages.common.app.ProductDetailsPage;
 import com.solvd.pages.common.app.ProductPage;
 import com.solvd.pages.common.app.component.Product;
 import com.solvd.service.LoginService;
+import com.solvd.service.ProductService;
 import com.zebrunner.carina.core.AbstractTest;
 
 import com.zebrunner.carina.utils.R;
@@ -66,6 +68,17 @@ public class AppTest extends AbstractTest {
         ProductData productDetails = ProductMapper.getProduct(productDetailsPage);
         assertEquals(productPicked, productDetails, "Product picked does not have same data as product page");
 
+    }
+
+    @Test(testName = "TC6")
+    public void verifyAddProductInCart() {
+        ProductService productService = new ProductService();
+        ProductDetailsPage productDetailsPage = productService.pickRandomProduct();
+        productDetailsPage.addToCart();
+        ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
+        CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
+        ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
+        assertEquals(addedProduct, cartProduct, "Product add to cart is not the same");
     }
 
     @AfterTest
