@@ -1,5 +1,6 @@
 package com.solvd.pages.ios.app.component;
 
+import com.solvd.pages.common.app.CartPage;
 import com.solvd.pages.common.app.component.Header;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -22,8 +23,9 @@ public class HeaderIOS extends Header {
     }
 
     @Override
-    public void clickCartButton() {
+    public CartPage clickCartButton() {
         clickIOS(cartButton);
+        return initPage(getDriver(), CartPage.class);
     }
 
     @Override
