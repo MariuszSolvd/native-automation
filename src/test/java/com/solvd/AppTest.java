@@ -4,6 +4,7 @@ import com.solvd.mapper.ProductMapper;
 import com.solvd.model.ProductData;
 import com.solvd.pages.common.HomePage;
 import com.solvd.pages.common.app.*;
+import com.solvd.pages.common.app.Menu;
 import com.solvd.pages.common.app.component.Product;
 import com.solvd.service.LoginService;
 import com.solvd.service.ProductService;
@@ -113,6 +114,15 @@ public class AppTest extends AbstractTest {
         checkoutInfoPage.clickContinue();
         assertTrue(checkoutInfoPage.isErrorVisible(), "Error message is not visible");
 
+    }
+
+    @Test(testName = "TC10")
+    public void shouldLogout() {
+        LoginService loginService = new LoginService();
+        ProductPage productPage = loginService.successfulLogin();
+        Menu menu = productPage.getHeader().clickMenuButton();
+        LoginPage loginPage = menu.clickLogout();
+        loginPage.assertPageOpened();
     }
 
     @AfterTest

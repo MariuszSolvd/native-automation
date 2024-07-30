@@ -1,6 +1,7 @@
 package com.solvd.pages.android.app.component;
 
 import com.solvd.pages.common.app.CartPage;
+import com.solvd.pages.common.app.Menu;
 import com.solvd.pages.common.app.component.Header;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import lombok.Getter;
@@ -27,8 +28,9 @@ public class HeaderAndroid extends Header {
     }
 
     @Override
-    public void clickMenuButton() {
+    public Menu clickMenuButton() {
         menuButton.click();
+        return initPage(getDriver(), Menu.class);
     }
 
 }

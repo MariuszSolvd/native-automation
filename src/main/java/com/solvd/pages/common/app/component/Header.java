@@ -1,6 +1,7 @@
 package com.solvd.pages.common.app.component;
 
 import com.solvd.pages.common.app.CartPage;
+import com.solvd.pages.common.app.Menu;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
@@ -17,5 +18,5 @@ public abstract class Header extends AbstractUIObject implements IMobileUtils {
 
     public abstract CartPage clickCartButton();
 
-    public abstract void clickMenuButton();
+    public abstract Menu clickMenuButton();
 }

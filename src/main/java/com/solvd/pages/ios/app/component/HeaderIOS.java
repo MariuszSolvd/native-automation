@@ -1,6 +1,7 @@
 package com.solvd.pages.ios.app.component;
 
 import com.solvd.pages.common.app.CartPage;
+import com.solvd.pages.common.app.Menu;
 import com.solvd.pages.common.app.component.Header;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -29,8 +30,9 @@ public class HeaderIOS extends Header {
     }
 
     @Override
-    public void clickMenuButton() {
+    public Menu clickMenuButton() {
         clickIOS(menuButton);
+        return initPage(getDriver(), Menu.class);
     }
 
     private void clickIOS(ExtendedWebElement element) {
