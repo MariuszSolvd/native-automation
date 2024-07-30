@@ -1,14 +1,16 @@
 package com.solvd.pages.android.app;
 
+import com.solvd.pages.android.app.component.FooterAndroid;
+import com.solvd.pages.android.app.component.HeaderAndroid;
 import com.solvd.pages.android.app.component.ProductCartAndroid;
 import com.solvd.pages.common.app.CartPage;
+import com.solvd.pages.common.app.CheckoutInfoPage;
 import com.solvd.pages.common.app.component.Footer;
 import com.solvd.pages.common.app.component.Header;
 import com.solvd.pages.common.app.component.ProductCart;
-import com.solvd.pages.ios.app.component.FooterIOS;
-import com.solvd.pages.ios.app.component.HeaderIOS;
 import com.solvd.utilis.Constants;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -20,11 +22,14 @@ public class CartPageAndroid extends CartPage {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Item']")
     private List<ProductCartAndroid> products;
 
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CHECKOUT']")
+    private ExtendedWebElement checkoutButton;
+
     @FindBy(xpath = Constants.HEADER_ANDROID)
-    private HeaderIOS header;
+    private HeaderAndroid header;
 
     @FindBy(xpath = Constants.FOOTER_ANDROID)
-    private FooterIOS footer;
+    private FooterAndroid footer;
 
 
     public CartPageAndroid(WebDriver driver) {
@@ -34,6 +39,13 @@ public class CartPageAndroid extends CartPage {
     @Override
     public List<? extends ProductCart> getProducts() {
         return products;
+    }
+
+    @Override
+    public CheckoutInfoPage clickCheckout() {
+        swipe(checkoutButton);
+        checkoutButton.click();
+        return initPage(getDriver(), CheckoutInfoPage.class);
     }
 
     @Override

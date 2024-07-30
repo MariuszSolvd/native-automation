@@ -12,4 +12,6 @@ public abstract class CartPage extends RegularsPage{
     }
 
     public abstract List<? extends ProductCart> getProducts();
+
+    public abstract CheckoutInfoPage clickCheckout();
 }
