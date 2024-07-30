@@ -3,10 +3,7 @@ package com.solvd;
 import com.solvd.mapper.ProductMapper;
 import com.solvd.model.ProductData;
 import com.solvd.pages.common.HomePage;
-import com.solvd.pages.common.app.CartPage;
-import com.solvd.pages.common.app.LoginPage;
-import com.solvd.pages.common.app.ProductDetailsPage;
-import com.solvd.pages.common.app.ProductPage;
+import com.solvd.pages.common.app.*;
 import com.solvd.pages.common.app.component.Product;
 import com.solvd.service.LoginService;
 import com.solvd.service.ProductService;
@@ -45,7 +42,6 @@ public class AppTest extends AbstractTest {
         assertTrue(homePage.isAppRunning(), "App is not running");
         loginPage.login(R.TESTDATA.get("incorrect_user"), R.TESTDATA.get("incorrect_password"));
         assertTrue(loginPage.isErrorVisible(), "Error is not visible");
-
     }
 
     @Test(testName = "TC4")
@@ -92,6 +88,31 @@ public class AppTest extends AbstractTest {
         assertEquals(addedProduct, cartProduct, "Product added to cart is not the same");
         cartPage.getProducts().getFirst().clickRemove();
         assertTrue(cartPage.getProducts().isEmpty(), "Product was not removed");
+    }
+
+    @Test(testName = "TC8")
+    public void checkoutWithValidInformation() {
+        ProductService productService = new ProductService();
+        CartPage cartPage = productService.pickRandomProductAndVerifyCart();
+        ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
+        CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckout();
+        checkoutInfoPage.fillData(R.TESTDATA.get("correct_name"),
+                R.TESTDATA.get("correct_lastname"), R.TESTDATA.get("correct_code"));
+        CheckoutOverviewPage checkoutOverviewPage = initPage(getDriver(), CheckoutOverviewPage.class);
+        ProductData checkoutProduct = ProductMapper.getProduct(checkoutOverviewPage.getProducts().getFirst());
+        assertEquals(cartProduct, checkoutProduct, "Products are not the same");
+        CheckoutCompletePage checkoutCompletePage = checkoutOverviewPage.clickFinishButton();
+        checkoutCompletePage.assertPageOpened();
+    }
+
+    @Test(testName = "TC9")
+    public void checkoutWithBlankInformation() {
+        ProductService productService = new ProductService();
+        CartPage cartPage = productService.pickRandomProductAndVerifyCart();
+        CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckout();
+        checkoutInfoPage.clickContinue();
+        assertTrue(checkoutInfoPage.isErrorVisible(), "Error message is not visible");
+
     }
 
     @AfterTest
