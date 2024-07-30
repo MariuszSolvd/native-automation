@@ -26,6 +26,9 @@ public class CheckoutInfoPageIOS extends CheckoutInfoPage {
     @ExtendedFindBy(iosPredicate = "name == 'test-CONTINUE'")
     private ExtendedWebElement continueButton;
 
+    @ExtendedFindBy(iosPredicate = "name == 'test-Error message'")
+    private ExtendedWebElement errorMessage;
+
     @ExtendedFindBy(iosClassChain = Constants.HEADER_IOS)
     private HeaderIOS header;
 
@@ -54,6 +57,11 @@ public class CheckoutInfoPageIOS extends CheckoutInfoPage {
     @Override
     public void clickContinue() {
         continueButton.click();
+    }
+
+    @Override
+    public boolean isErrorVisible() {
+        return errorMessage.isVisible();
     }
 
     @Override

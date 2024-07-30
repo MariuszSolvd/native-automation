@@ -15,6 +15,8 @@ public abstract class CheckoutInfoPage extends RegularsPage{
 
     public abstract void clickContinue();
 
+    public abstract boolean isErrorVisible();
+
     public void fillData(String name, String lastname, String code) {
         inputName(name);
         inputLastName(lastname);

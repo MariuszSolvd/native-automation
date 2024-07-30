@@ -23,6 +23,9 @@ public class CheckoutInfoPageAndroid extends CheckoutInfoPage {
     @FindBy(xpath = "//android.widget.EditText[@content-desc='test-Zip/Postal Code']")
     private ExtendedWebElement postalCodeInput;
 
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-Error message']")
+    private ExtendedWebElement errorMessage;
+
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='test-CONTINUE']")
     private ExtendedWebElement continueButton;
 
@@ -54,6 +57,11 @@ public class CheckoutInfoPageAndroid extends CheckoutInfoPage {
     @Override
     public void clickContinue() {
         continueButton.click();
+    }
+
+    @Override
+    public boolean isErrorVisible() {
+        return errorMessage.isVisible();
     }
 
     @Override
