@@ -105,6 +105,16 @@ public class AppTest extends AbstractTest {
         checkoutCompletePage.assertPageOpened();
     }
 
+    @Test(testName = "TC9")
+    public void checkoutWithBlankInformation() {
+        ProductService productService = new ProductService();
+        CartPage cartPage = productService.pickRandomProductAndVerifyCart();
+        CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckout();
+        checkoutInfoPage.clickContinue();
+        assertTrue(checkoutInfoPage.isErrorVisible(), "Error message is not visible");
+
+    }
+
     @AfterTest
     public void closeApp() {
         HomePage homePage = initPage(getDriver(), HomePage.class);
