@@ -3,17 +3,20 @@ package com.solvd.pages.ios.app.component;
 import com.solvd.pages.common.app.component.Product;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
-
+@Getter
+@EqualsAndHashCode(callSuper = false)
 public class ProductIOS extends Product {
 
     @ExtendedFindBy(iosPredicate = "name == 'test-Item title'")
-    private ExtendedWebElement name;
+    private ExtendedWebElement productName;
 
     @ExtendedFindBy(iosPredicate = "name == 'test-Price'")
-    private ExtendedWebElement price;
+    private ExtendedWebElement productPrice;
 
     @ExtendedFindBy(iosPredicate = "name == 'test-ADD TO CART'")
     private ExtendedWebElement addToCart;
@@ -23,13 +26,13 @@ public class ProductIOS extends Product {
     }
 
     @Override
-    public String getNameText() {
-        return name.getText();
+    public ExtendedWebElement getProductName() {
+        return productName;
     }
 
     @Override
-    public String getPriceText() {
-        return price.getText();
+    public ExtendedWebElement getProductPrice() {
+        return productPrice;
     }
 
     @Override

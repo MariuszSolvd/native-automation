@@ -4,9 +4,9 @@ import com.solvd.pages.common.app.component.Footer;
 import com.solvd.pages.common.app.component.Header;
 import org.openqa.selenium.WebDriver;
 
-public abstract class RegularsBasePage extends AppBasePage {
+public abstract class RegularsPage extends AppPage {
 
-    public RegularsBasePage(WebDriver driver) {
+    public RegularsPage(WebDriver driver) {
         super(driver);
     }
 
