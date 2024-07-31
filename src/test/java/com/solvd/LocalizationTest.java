@@ -3,7 +3,6 @@ package com.solvd;
 import com.solvd.pages.common.HomePage;
 import com.solvd.pages.common.app.LoginPage;
 import com.solvd.pages.common.app.ProductPage;
-import com.solvd.utilis.AdbUtils;
 import com.zebrunner.carina.core.AbstractTest;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.resources.L10N;
@@ -16,8 +15,6 @@ public class LocalizationTest extends AbstractTest {
 
     @BeforeMethod
     public void setUp() {
-        AdbUtils.setSystemLanguage(R.CONFIG.get("locale"));
-        L10N.setLocale(R.CONFIG.get("locale"));
         L10N.load();
     }
 
