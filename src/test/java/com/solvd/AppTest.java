@@ -6,9 +6,6 @@ import com.solvd.pages.common.HomePage;
 import com.solvd.pages.common.app.*;
 import com.solvd.pages.common.app.Menu;
 import com.solvd.pages.common.app.component.Product;
-import com.solvd.service.LoginService;
-import com.solvd.service.ProductService;
-import com.zebrunner.carina.core.AbstractTest;
 
 import com.zebrunner.carina.utils.R;
 import org.testng.annotations.AfterTest;
@@ -17,7 +14,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class AppTest extends AbstractTest {
+public class AppTest extends TestBase {
 
     @Test(testName = "TC1")
     public void shouldOpenSwagLabsApp() {
@@ -47,8 +44,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC4")
     public void scrollProductPage() {
-        LoginService loginService = new LoginService();
-        ProductPage productPage = loginService.successfulLogin();
+        ProductPage productPage = successfulLogin();
         productPage.assertPageOpened();
         productPage.swipeToLastProduct();
         assertTrue(productPage.isLastProductVisible(), "Last product is not visible");
@@ -56,8 +52,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC5")
     public void verifyProductDetails() {
-        LoginService loginService = new LoginService();
-        ProductPage productBasePage = loginService.successfulLogin();
+        ProductPage productBasePage = successfulLogin();
         productBasePage.assertPageOpened();
         Product randomProduct = productBasePage.getRandomProduct();
         ProductData productPicked = ProductMapper.getProduct(randomProduct);
@@ -69,8 +64,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC6")
     public void verifyAddProductInCart() {
-        ProductService productService = new ProductService();
-        ProductDetailsPage productDetailsPage = productService.pickRandomProduct();
+        ProductDetailsPage productDetailsPage = pickRandomProduct();
         productDetailsPage.addToCart();
         ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
@@ -80,8 +74,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC7")
     public void verifyRemoveProductFromCart() {
-        ProductService productService = new ProductService();
-        ProductDetailsPage productDetailsPage = productService.pickRandomProduct();
+        ProductDetailsPage productDetailsPage = pickRandomProduct();
         productDetailsPage.addToCart();
         ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
@@ -93,8 +86,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC8")
     public void checkoutWithValidInformation() {
-        ProductService productService = new ProductService();
-        CartPage cartPage = productService.pickRandomProductAndVerifyCart();
+        CartPage cartPage = pickRandomProductAndVerifyCart();
         ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
         CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckout();
         checkoutInfoPage.fillData(R.TESTDATA.get("correct_name"),
@@ -108,8 +100,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC9")
     public void checkoutWithBlankInformation() {
-        ProductService productService = new ProductService();
-        CartPage cartPage = productService.pickRandomProductAndVerifyCart();
+        CartPage cartPage = pickRandomProductAndVerifyCart();
         CheckoutInfoPage checkoutInfoPage = cartPage.clickCheckout();
         checkoutInfoPage.clickContinue();
         assertTrue(checkoutInfoPage.isErrorVisible(), "Error message is not visible");
@@ -118,8 +109,7 @@ public class AppTest extends AbstractTest {
 
     @Test(testName = "TC10")
     public void shouldLogout() {
-        LoginService loginService = new LoginService();
-        ProductPage productPage = loginService.successfulLogin();
+        ProductPage productPage = successfulLogin();
         Menu menu = productPage.getHeader().clickMenuButton();
         LoginPage loginPage = menu.clickLogout();
         loginPage.assertPageOpened();
