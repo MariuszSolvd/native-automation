@@ -18,6 +18,7 @@
         <lombok.ver>1.18.32</lombok.ver>
         <carina-core.ver>1.2.10</carina-core.ver>
         <carina-api.ver>1.2.4</carina-api.ver>
+        <carina-agent.ver>1.9.11</carina-agent.ver>
     </properties>
 
     <dependencies>
@@ -37,6 +38,13 @@
             <artifactId>carina-core</artifactId>
             <version>${carina-core.ver}</version>
         </dependency>
+        <dependency>
+            <groupId>com.zebrunner</groupId>
+            <artifactId>agent-testng</artifactId>
+            <version>${carina-agent.ver}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
