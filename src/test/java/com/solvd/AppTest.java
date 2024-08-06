@@ -8,6 +8,7 @@ import com.solvd.pages.common.app.Menu;
 import com.solvd.pages.common.app.component.Product;
 import com.solvd.service.LoginService;
 import com.solvd.service.ProductService;
+import com.zebrunner.agent.core.annotation.TestCaseKey;
 import com.zebrunner.carina.core.AbstractTest;
 
 import com.zebrunner.carina.utils.R;
@@ -20,6 +21,7 @@ import static org.testng.Assert.assertTrue;
 public class AppTest extends AbstractTest {
 
     @Test(testName = "TC1")
+    @TestCaseKey("ANDT-2")
     public void shouldOpenSwagLabsApp() {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         homePage.openApp();
@@ -27,6 +29,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC2")
+    @TestCaseKey("ANDT-3")
     public void shouldLogin() {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         LoginPage loginPage = homePage.openApp();
@@ -37,6 +40,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC3")
+    @TestCaseKey("ANDT-4")
     public void shouldNotLogin() {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         LoginPage loginPage = homePage.openApp();
@@ -46,6 +50,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC4")
+    @TestCaseKey("ANDT-5")
     public void scrollProductPage() {
         LoginService loginService = new LoginService();
         ProductPage productPage = loginService.successfulLogin();
@@ -55,6 +60,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC5")
+    @TestCaseKey("ANDT-6")
     public void verifyProductDetails() {
         LoginService loginService = new LoginService();
         ProductPage productBasePage = loginService.successfulLogin();
@@ -68,6 +74,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC6")
+    @TestCaseKey("ANDT-7")
     public void verifyAddProductInCart() {
         ProductService productService = new ProductService();
         ProductDetailsPage productDetailsPage = productService.pickRandomProduct();
@@ -79,6 +86,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC7")
+    @TestCaseKey("ANDT-8")
     public void verifyRemoveProductFromCart() {
         ProductService productService = new ProductService();
         ProductDetailsPage productDetailsPage = productService.pickRandomProduct();
@@ -92,6 +100,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC8")
+    @TestCaseKey("ANDT-9")
     public void checkoutWithValidInformation() {
         ProductService productService = new ProductService();
         CartPage cartPage = productService.pickRandomProductAndVerifyCart();
@@ -107,6 +116,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC9")
+    @TestCaseKey("ANDT-10")
     public void checkoutWithBlankInformation() {
         ProductService productService = new ProductService();
         CartPage cartPage = productService.pickRandomProductAndVerifyCart();
@@ -117,6 +127,7 @@ public class AppTest extends AbstractTest {
     }
 
     @Test(testName = "TC10")
+    @TestCaseKey("ANDT-11")
     public void shouldLogout() {
         LoginService loginService = new LoginService();
         ProductPage productPage = loginService.successfulLogin();
