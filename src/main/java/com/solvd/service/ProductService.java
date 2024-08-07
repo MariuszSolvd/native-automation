@@ -33,6 +33,7 @@ public class ProductService implements ICustomTypePageFactory {
         productDetailsPage.addToCart();
         ProductData productPicked = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
+        cartPage.loadProducts();
         ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
         if (!isProductCorrect(productPicked, cartProduct)) {
             throw new ProductMismatchException(

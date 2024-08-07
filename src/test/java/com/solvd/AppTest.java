@@ -81,6 +81,7 @@ public class AppTest extends AbstractTest {
         productDetailsPage.addToCart();
         ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
+        cartPage.loadProducts();
         ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
         assertEquals(addedProduct, cartProduct, "Product added to cart is not the same");
     }
@@ -93,6 +94,7 @@ public class AppTest extends AbstractTest {
         productDetailsPage.addToCart();
         ProductData addedProduct = ProductMapper.getProduct(productDetailsPage);
         CartPage cartPage = productDetailsPage.getHeader().clickCartButton();
+        cartPage.loadProducts();
         ProductData cartProduct = ProductMapper.getProduct(cartPage.getProducts().getFirst());
         assertEquals(addedProduct, cartProduct, "Product added to cart is not the same");
         cartPage.getProducts().getFirst().clickRemove();

@@ -34,6 +34,7 @@ public class CartPageAndroid extends CartPage {
 
     public CartPageAndroid(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(checkoutButton);
     }
 
     @Override
