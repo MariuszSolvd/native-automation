@@ -1,5 +1,6 @@
 package com.solvd;
 
+import com.solvd.exception.ScreenshotFailedException;
 import com.solvd.mapper.ProductMapper;
 import com.solvd.model.ProductData;
 import com.solvd.pages.common.HomePage;
@@ -9,9 +10,12 @@ import com.solvd.pages.common.app.component.Product;
 import com.solvd.service.LoginService;
 import com.solvd.service.ProductService;
 import com.zebrunner.agent.core.annotation.TestCaseKey;
+import com.zebrunner.agent.core.registrar.Screenshot;
 import com.zebrunner.carina.core.AbstractTest;
 
 import com.zebrunner.carina.utils.R;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -46,6 +50,7 @@ public class AppTest extends AbstractTest {
         LoginPage loginPage = homePage.openApp();
         assertTrue(homePage.isAppRunning(), "App is not running");
         loginPage.login(R.TESTDATA.get("incorrect_user"), R.TESTDATA.get("incorrect_password"));
+        captureScreenshot();
         assertTrue(loginPage.isErrorVisible(), "Error is not visible");
     }
 
@@ -142,5 +147,15 @@ public class AppTest extends AbstractTest {
     public void closeApp() {
         HomePage homePage = initPage(getDriver(), HomePage.class);
         homePage.turnOffApp();
+    }
+
+    private void captureScreenshot(){
+        try{
+            byte[] screenshotBytes = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+            long capturedAtMillis = System.currentTimeMillis();
+            Screenshot.upload(screenshotBytes, capturedAtMillis);
+        } catch (Exception e) {
+            throw new ScreenshotFailedException("Failed to make Screenshot");
+        }
     }
 }
